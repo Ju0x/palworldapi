@@ -1,2 +1,2 @@
-# palworld-rest
-Easy to use wrapper for the Palworld Server REST API
+# Palworld REST API Wrapper
+Easy to use wrapper for the Palworld REST API
