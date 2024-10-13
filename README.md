@@ -1,10 +1,18 @@
 # Palworld API Wrapper
-Easy to use wrapper for the Palworld REST API
 
+<div align="center">
+
+
+<img src="https://github.com/user-attachments/assets/c2693a70-0c25-4308-937f-e5f97137176c" width="240px" height="104px">
+
+
+
+Easy to use wrapper for the Palworld REST API
 
 [Set up a Palworld Server](https://tech.palworldgame.com/)
 
 [Read the API Docs](https://tech.palworldgame.com/category/rest-api)
+</div>
 
 ## Installation
 
