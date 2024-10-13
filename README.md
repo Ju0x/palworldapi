@@ -28,6 +28,9 @@ Typically the username is `admin`.
 The `AdminPassword` is set in the Server Configuration. ([How to configure the Palworld Server](https://tech.palworldgame.com/settings-and-operation/configuration))
 
 
+The REST API must be activated on the server with the `RESTAPIEnabled=True` option.
+
+
 ## Examples
 
 You can find some examples [here](https://github.com/Ju0x/palworldapi/tree/main/examples)

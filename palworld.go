@@ -3,6 +3,7 @@ package palworldapi
 import (
 	"fmt"
 	"strings"
+	"time"
 )
 
 func New(host, username, password string) *PalworldAPI {
@@ -117,8 +118,8 @@ func (p *PalworldAPI) SaveWorld() (err error) {
 
 // Shuts the server down
 // Palworld docs: https://tech.palworldgame.com/api/rest-api/shutdown
-func (p *PalworldAPI) Shutdown(waittime int, message string) (err error) {
-	err = p.post("/shutdown", ServerShutdown{WaitTime: waittime, Message: message})
+func (p *PalworldAPI) Shutdown(waittime time.Duration, message string) (err error) {
+	err = p.post("/shutdown", ServerShutdown{WaitTime: int(waittime.Seconds()), Message: message})
 	return
 }
 

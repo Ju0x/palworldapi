@@ -22,7 +22,7 @@ func main() {
 		panic(err)
 	}
 
-	pal.Shutdown(30*6, "Server shuts down in 60 Seconds!")
+	pal.Shutdown(10*time.Second, "Server shuts down in 10 Seconds!")
 
 	time.Sleep(5 * time.Second)
 	if len(players) > 0 {
