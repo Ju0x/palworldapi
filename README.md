@@ -1,13 +1,19 @@
 # Palworld API Wrapper
 Easy to use wrapper for the Palworld REST API
 
----
 
-If you don't have a Palworld Server, follow the instructions [here](https://tech.palworldgame.com/)
+[Set up a Palworld Server](https://tech.palworldgame.com/)
 
-You can find Palworlds REST API documentation [here](https://tech.palworldgame.com/category/rest-api)
+[Read the API Docs](https://tech.palworldgame.com/category/rest-api)
 
----
+## Installation
+
+You can install the package by using `go get` in your Go Project.
+
+```
+go get -u github.com/Ju0x/palworldapi
+```
+This will pull the latest release.
 
 ## Usage
 
