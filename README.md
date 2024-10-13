@@ -39,6 +39,33 @@ The `AdminPassword` is set in the Server Configuration. ([How to configure the P
 The REST API must be activated on the server with the `RESTAPIEnabled=True` option.
 
 
+### First Hello World
+
+With the palworldapi instance you are now able to use the wrapper functions.
+
+```go
+package main
+
+import "github.com/Ju0x/palworldapi"
+
+func main() {
+    pal := palworldapi.New("http://localhost:8212", os.Getenv("USERNAME"), os.Getenv("ADMIN_PASSWORD"))
+
+    // Sends the message to the server globally
+    pal.Announce("Hello World!")
+}
+```
+
+Then run it
+```
+USERNAME=admin ADMIN_PASSWORD=your_admin_password go run .
+```
+
+The result should look like this:
+
+<img src="https://github.com/user-attachments/assets/d2d986da-5295-4a3d-ad83-57ea1cd058d4" height="48px">
+
+
 ## Examples
 
 You can find some examples [here](https://github.com/Ju0x/palworldapi/tree/main/examples)
