@@ -1,10 +1,18 @@
 # Palworld API Wrapper
-Easy to use wrapper for the Palworld REST API
 
+<div align="center">
+
+
+<img src="https://github.com/user-attachments/assets/c2693a70-0c25-4308-937f-e5f97137176c" width="240px" height="104px">
+
+
+
+Easy to use wrapper for the Palworld REST API
 
 [Set up a Palworld Server](https://tech.palworldgame.com/)
 
 [Read the API Docs](https://tech.palworldgame.com/category/rest-api)
+</div>
 
 ## Installation
 
@@ -29,6 +37,33 @@ The `AdminPassword` is set in the Server Configuration. ([How to configure the P
 
 
 The REST API must be activated on the server with the `RESTAPIEnabled=True` option.
+
+
+### First Hello World
+
+With the palworldapi instance you are now able to use the wrapper functions.
+
+```go
+package main
+
+import "github.com/Ju0x/palworldapi"
+
+func main() {
+    pal := palworldapi.New("http://localhost:8212", os.Getenv("USERNAME"), os.Getenv("ADMIN_PASSWORD"))
+
+    // Sends the message to the server globally
+    pal.Announce("Hello World!")
+}
+```
+
+Then run it
+```
+USERNAME=admin ADMIN_PASSWORD=your_admin_password go run .
+```
+
+The result should look like this:
+
+<img src="https://github.com/user-attachments/assets/d2d986da-5295-4a3d-ad83-57ea1cd058d4" height="48px">
 
 
 ## Examples
