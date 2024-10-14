@@ -50,8 +50,11 @@ func (p *PalworldAPI) Players() (players []*Player, err error) {
 		return nil, fmt.Errorf("error getting player list: %w", err)
 	}
 
-	if playerList.Players == nil {
-		return nil, fmt.Errorf("players is nil")
+	// This creates a list without content to prevent nil-pointer exceptions
+	if playerList == nil {
+		playerList = &PlayerList{
+			Players: []*Player{},
+		}
 	}
 
 	players = playerList.Players
