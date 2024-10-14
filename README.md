@@ -1,4 +1,6 @@
 # Palworld API Wrapper
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/96c7fd4725fa49c88121c7e1af158899)](https://app.codacy.com/gh/Ju0x/palworldapi/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 
 <div align="center">
 
