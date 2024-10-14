@@ -1,5 +1,7 @@
 # Palworld API Wrapper
+![GitHub License](https://img.shields.io/github/license/Ju0x/palworldapi)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/96c7fd4725fa49c88121c7e1af158899)](https://app.codacy.com/gh/Ju0x/palworldapi/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Ju0x/palworldapi)](https://goreportcard.com/report/github.com/Ju0x/palworldapi)
 
 
 <div align="center">

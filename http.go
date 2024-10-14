@@ -21,13 +21,12 @@ func (p *PalworldAPI) apiUrl(s string) string {
 	return "http://" + p.Host + Endpoint + s
 }
 
-func (p *PalworldAPI) request(method string, path string, body []byte) (*http.Response, error) {
-	req, err := http.NewRequest(method, p.apiUrl(path), bytes.NewBuffer(body))
+func (p *PalworldAPI) request(method string, url string, body []byte) (*http.Response, error) {
+	req, err := http.NewRequest(method, url, bytes.NewBuffer(body))
 
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-
 	p.headers(req)
 
 	res, err := p.client.Do(req)
@@ -46,21 +45,30 @@ func (p *PalworldAPI) request(method string, path string, body []byte) (*http.Re
 	return res, err
 }
 
+func readBody(res *http.Response) ([]byte, error) {
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+
+	res.Body.Close()
+	return body, nil
+}
+
 // Executes a GET request to the REST API
 // Response data will be written in the result param
 func (p *PalworldAPI) get(path string, result interface{}) error {
-	res, err := p.request("GET", path, nil)
+	res, err := p.request("GET", p.apiUrl(path), nil)
 
 	if err != nil {
 		return fmt.Errorf("GET request failed: %w", err)
 	}
 
-	body, err := io.ReadAll(res.Body)
-	if err != nil {
-		return fmt.Errorf("error reading response body: %w", err)
-	}
+	body, err := readBody(res)
 
-	res.Body.Close()
+	if err != nil {
+		return err
+	}
 
 	err = json.Unmarshal(body, result)
 	if err != nil {
@@ -79,7 +87,7 @@ func (p *PalworldAPI) post(path string, body interface{}) error {
 		return fmt.Errorf("error marshalling body: %w", err)
 	}
 
-	res, err := p.request("POST", path, jsonBody)
+	res, err := p.request("POST", p.apiUrl(path), jsonBody)
 
 	if err != nil {
 		return fmt.Errorf("POST request failed: %w", err)

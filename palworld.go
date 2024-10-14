@@ -2,6 +2,7 @@ package palworldapi
 
 import (
 	"fmt"
+	"net/http"
 	"strings"
 	"time"
 )
@@ -36,7 +37,7 @@ func (p *PalworldAPI) Info() (info *ServerInfo, err error) {
 		return nil, fmt.Errorf("error getting server info: %w", err)
 	}
 
-	return info, err
+	return
 }
 
 // Gets the player list
@@ -130,5 +131,42 @@ func (p *PalworldAPI) Shutdown(waittime time.Duration, message string) (err erro
 // Palworld docs: https://tech.palworldgame.com/api/rest-api/stop
 func (p *PalworldAPI) ForceStop() (err error) {
 	err = p.post("/stop", nil)
+	return
+}
+
+// Gets a list of banned players by requesting the banlist provided in the server settings
+// Not documented, this is just a helper function
+// WARNING: This could request external sources, for example the default banlist located at https://api.palworldgame.com/api/banlist.txt, be sure to query these not too fast
+func (p *PalworldAPI) BanList() (bannedPlayers []string, err error) {
+	settings, err := p.Settings()
+
+	if err != nil {
+		return nil, err
+	}
+
+	if settings.BanListURL == "" {
+		return nil, fmt.Errorf("banlist is not set")
+	}
+
+	// Use custom request instead of p.request to request an external source
+	req, err := http.NewRequest("GET", settings.BanListURL, nil)
+
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := p.client.Do(req)
+
+	if err != nil {
+		return nil, err
+	}
+
+	body, err := readBody(res)
+
+	if err != nil {
+		return nil, err
+	}
+
+	bannedPlayers = strings.Split(string(body), "\n")
 	return
 }

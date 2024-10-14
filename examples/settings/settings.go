@@ -16,7 +16,7 @@ func main() {
 		panic(err)
 	}
 
-	// Some example values you can retreive
+	// Some example values you can retrieve
 	fmt.Println("Server Name: ", settings.ServerName)
 	fmt.Println("Rest API Port: ", settings.RESTAPIPort)
 	fmt.Println("PVP Enabled: ", settings.IsPvP)
